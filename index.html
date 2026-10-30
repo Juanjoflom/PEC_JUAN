@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio De Maquetacion Juan Flores</title>
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.4s;
+            margin-top: 5px;
+            border-radius: 6px;
+        }
+
+        .active, .accordion:hover {
+            background-color: #ccc;
+        }
+
+        .accordion:after {
+            content: '\002B';
+            color: #777;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+        .active:after {
+            content: "\2212";
+        }
+
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            border-left: 3px solid #007bff;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<header><h1>Proyecto Escolar Comunitario (PEC)</h1>
+<nav>
+    <ul>
+        <a href="index.html">
+<button class="button2">Pagina Principal</button>
+</a>
+<a href="emociones.html">
+<button class="button2">Emociones</button>
+</a>
+        <a href="saludmental.html">
+<button class="button2">Salud Mental</button>
+</a>
+<a href="estres.html">
+<button class="button2">Estres</button>
+</a>
+    </ul>
+</nav>
+</header>
+
+<main>
+    <section>
+        <h2>Problematica</h2>
+        <p>El alto indice de ansiedad, depresion y riesgo de suicido
+            en el estudiante, el cual se manifiesta en el bajo
+            rendimiento academico y apatia generalizada hacia
+            las actividades escolares y comunitarias.</p>
+    </section>
+    <br>
+    <section>
+        <p>En la actualidad, las comunidades educativas enfrentan directamente en la motivación, la convivencia y el progreso 
+        <br>académico académico de los estudiantes. Para respondera esta realidad, el PEC trabaja mediante el análisis constante del entorno escolar para 
+        <br>identificar necesidades prioritarias y diseñar estrategias de intervención oportuna que involucren a docentes, orientadores y familias.</p>
+    </section>
+    <section>
+    <img src="emociones.jpg" alt="emociones"  width="600" height="430">
+    </section>
+</main>
+<aside>
+    <h3>Redes de Bienestar</h3>
+    <p>Tejiendo por la salud mental y el
+        exito escolar.</p>
+</aside>
+<img src="emociones2.jpg" alt="emociones2"  width="400" height="300">
+<section style="clear: both; max-width: 800px; margin: 30px auto; font-family: Arial, sans-serif;">
+    <h3 style="text-align: center;">Preguntas Frecuentes y Recursos</h3>
+
+    <button class="accordion">¿A quién puedo acudir si me siento abrumado?</button>
+    <div class="panel">
+        <p>Puedes acercarte al área de orientación escolar, con tus profesores de confianza o comunicarte con las líneas de atención a la salud mental de tu comunidad.</p>
+    </div>
+
+    <button class="accordion">¿Qué acciones realiza el PEC en nuestra escuela?</button>
+    <div class="panel">
+        <p>El Proyecto Escolar Comunitario realiza diagnósticos del entorno, talleres de autorregulación emocional y canalización de apoyo para estudiantes que lo necesiten.</p>
+    </div>
+
+    <button class="accordion">¿Cómo puedo ayudar a un compañero?</button>
+    <div class="panel">
+        <p>Escúchalo sin juzgar, valida sus emociones y acompáñalo a buscar ayuda con un adulto de confianza o tutor dentro de la institución.</p>
+    </div>
+</section>
+<audio id="persistent-audio" controls>
+  <source src="cancion.mp3" type="audio/mp3">
+</audio>
+
+<script>
+  const audio = document.getElementById('persistent-audio');
+
+  const savedTime = localStorage.getItem('audio_current_time');
+  const isPlaying = localStorage.getItem('audio_is_playing');
+
+  if (savedTime) {
+    audio.currentTime = parseFloat(savedTime);
+  }
+
+  if (isPlaying === 'true') {
+    audio.play().catch(() => {
+      console.log("Haz clic en la página para reanudar el audio.");
+    });
+  }
+
+  audio.addEventListener('timeupdate', () => {
+    localStorage.setItem('audio_current_time', audio.currentTime);
+  });
+
+  audio.addEventListener('play', () => {
+    localStorage.setItem('audio_is_playing', 'true');
+  });
+
+  audio.addEventListener('pause', () => {
+    localStorage.setItem('audio_is_playing', 'false');
+  });
+</script>
+<footer>
+    <p>&copy; 2026 Mi sitio Web. Todos
+        los derechos reservados. Juan Flores.</p>
+</footer>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            } 
+        });
+    }
+</script>
+<script src="https://www.youtube.com/iframe_api"></script>
+
+
+</html>

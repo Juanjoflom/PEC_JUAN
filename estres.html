@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estres</title>
+    <link rel="stylesheet" href="estilos.css">
+<style>
+    .respiracion-box {
+            background-color: #f4f8fb;
+            border: 2px solid #bce0fd;
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 500px;
+            margin: 20px auto;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .btn-respirar {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-respirar:hover {
+            background-color: #0056b3;
+        }
+        .fase-texto {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin: 15px 0 5px 0;
+        }
+        .contador-numero {
+            font-size: 48px;
+            font-weight: bold;
+            color: #007bff;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>Gestión del Estrés y Autorregulación</h1>
+        <nav>
+            <ul>
+                <a href="index.html">
+<button class="button2">Pagina Principal</button>
+</a>
+<a href="emociones.html">
+<button class="button2">Emociones</button>
+</a>
+        <a href="saludmental.html">
+<button class="button2">Salud Mental</button>
+</a>
+<a href="estres.html">
+<button class="button2">Estres</button>
+</a>
+            </ul>
+        </nav>
+        </header>
+<h1 style="text-align: center;">El Estrés en la Vida Estudiantil: ¿Qué es y cómo afrontarlo?</h1>
+<h4 style="text-align: center;">El estrés es una respuesta natural del cuerpo ante situaciones desafiantes o de 
+    <br>alta exigencia, pero aprender a regularlo es la clave para cuidar nuestra salud física, mental y emocional.</h4>
+<main>
+    <h1>¿Qué es el Estrés Académico y Emocional?</h1>
+    <p><h4>El estrés surge cuando percibimos que las demandas de la escuela o la vida cotidiana superan los recursos que tenemos para responder.</h4></p>
+<h3>Estrés Positivo (Eustrés):</h3> Es el pequeño impulso que nos motiva a cumplir con entregas, estudiar para un examen o prepararnos para un evento importante.
+
+<h3>Estrés Negativo (Distrés):</h3> Ocurre cuando la presión se mantiene durante mucho tiempo, generando cansancio constante, dolor de cabeza, frustración o dificultad para concentrarse.
+</main>
+<aside>
+    <img src="estres.jpg" alt="estres"  width="350" height="250">
+</aside>
+
+<div style="clear: both; display: block; width: 100%; text-align: center; padding-top: 30px;">
+<h2>¿Que es la tecnica 4 7 8?</h2>
+     La técnica de respiración 4-7-8 es un ejercicio diseñado por el Dr. Andrew Weil para ayudar a reducir el estrés, calmar el sistema nervioso y facilitar el sueño mediante el control 
+    <br>del ritmo respiratorio. Funciona actúa como un tranquilizante natural para el cuerpo, ayudando a pasar de un estado de alerta a uno de relajación profunda.</h5>
+    </p>
+    <div class="respiracion-box">
+            <h3>Ponte a prueba con este ejercicio interactivo</h3>
+            <button id="btnIniciar" class="btn-respirar" onclick="iniciarRespiracion()">Iniciar Ejercicio</button>
+            <div id="faseTexto" class="fase-texto">¿Listo para empezar?</div>
+            <div id="contador" class="contador-numero">--</div>
+        </div>
+    </div>
+    <script>
+        let temporizador;
+        let ejecutando = false;
+
+        function iniciarRespiracion() {
+            const btn = document.getElementById('btnIniciar');
+            const faseTexto = document.getElementById('faseTexto');
+            const contador = document.getElementById('contador');
+
+            if (ejecutando) {
+                clearTimeout(temporizador);
+                ejecutando = false;
+                btn.innerText = "Iniciar Ejercicio";
+                faseTexto.innerText = "Ejercicio detenido";
+                contador.innerText = "--";
+                return;
+            }
+
+            ejecutando = true;
+            btn.innerText = "Detener Ejercicio";
+            
+            function ciclo478() {
+                if (!ejecutando) return;
+
+                faseTexto.innerText = "1. Inhala por la nariz...";
+                faseTexto.style.color = "#28a745"; 
+                contarSegundos(4, () => {
+                    if (!ejecutando) return;
+                    
+                    faseTexto.innerText = "2. Mantén el aire...";
+                    faseTexto.style.color = "#ffc107"; 
+                    contarSegundos(7, () => {
+                        if (!ejecutando) return;
+
+                        
+                        faseTexto.innerText = "3. Exhala por la boca...";
+                        faseTexto.style.color = "#dc3545"; 
+                        contarSegundos(8, () => {
+                            if (ejecutando) {
+                                ciclo478(); 
+                            }
+                        });
+                    });
+                });
+            }
+
+            ciclo478();
+        }
+
+        function contarSegundos(segundos, alTerminar) {
+            let tiempoRestante = segundos;
+            const contador = document.getElementById('contador');
+            contador.innerText = tiempoRestante;
+
+            function decremento() {
+                if (!ejecutando) return;
+                tiempoRestante--;
+                if (tiempoRestante > 0) {
+                    contador.innerText = tiempoRestante;
+                    temporizador = setTimeout(decremento, 1000);
+                } else {
+                    alTerminar();
+                }
+            }
+
+            temporizador = setTimeout(decremento, 1000);
+        }
+    </script>
+    <audio id="persistent-audio" controls>
+  <source src="cancion.mp3" type="audio/mp3">
+</audio>
+
+<script>
+  const audio = document.getElementById('persistent-audio');
+
+  const savedTime = localStorage.getItem('audio_current_time');
+  const isPlaying = localStorage.getItem('audio_is_playing');
+
+  if (savedTime) {
+    audio.currentTime = parseFloat(savedTime);
+  }
+
+  if (isPlaying === 'true') {
+    audio.play().catch(() => {
+      console.log("Haz clic en la página para reanudar el audio.");
+    });
+  }
+
+  audio.addEventListener('timeupdate', () => {
+    localStorage.setItem('audio_current_time', audio.currentTime);
+  });
+
+  audio.addEventListener('play', () => {
+    localStorage.setItem('audio_is_playing', 'true');
+  });
+
+  audio.addEventListener('pause', () => {
+    localStorage.setItem('audio_is_playing', 'false');
+  });
+</script>
+    </body>

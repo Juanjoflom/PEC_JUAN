@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emociones</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header><h1>Emociones</h1>
+<nav>
+    <ul>
+        <a href="index.html">
+<button class="button2">Pagina Principal</button>
+</a>
+<a href="emociones.html">
+<button class="button2">Emociones</button>
+</a>
+        <a href="saludmental.html">
+<button class="button2">Salud Mental</button>
+</a>
+<a href="estres.html">
+<button class="button2">Estres</button>
+</a>
+    </ul>
+</nav>
+</header>
+    <div class="card-grid">
+
+  <div class="uiverse-card">
+    <img src="alegria.jpg" alt="Imagen 1">
+    <div class="card__content">
+      <p class="card__title">ALEGRIA</p>
+      <p class="card__description">Representa el bienestar, la motivación y la satisfacción. Su función es impulsar la búsqueda de experiencias positivas, fortalecer los vínculos sociales y fomentar el optimismo.</p>
+    </div>
+  </div>
+
+  <div class="uiverse-card">
+    <img src="tristeza.jpg" alt="Imagen 2">
+    <div class="card__content">
+      <p class="card__title">TRISTEZA</p>
+      <p class="card__description">Surge ante las pérdidas, decepciones o momentos difíciles. Su rol fundamental es permitir el desahogo emocional, procesar el dolor y comunicar la necesidad de ayuda o empatía.</p>
+    </div>
+  </div>
+
+  <div class="uiverse-card">
+    <img src="furia.jpg" alt="Imagen 3">
+    <div class="card__content">
+      <p class="card__title">ENOJO</p>
+      <p class="card__description">Se activa frente a situaciones percibidas como injustas, amenazantes o frustrantes. Su función es movilizar energía para defender límites, luchar por la justicia o reaccionar ante agresiones.</p>
+    </div>
+  </div>
+
+  <div class="uiverse-card">
+    <img src="desagrado.jpg" alt="Imagen 4">
+    <div class="card__content">
+      <p class="card__title">DESAGRADO</p>
+      <p class="card__description">Funciona como un filtro de protección. Evita la ingesta de sustancias nocivas o dañinas y rechaza situaciones, comportamientos o entornos que resulten desagradables o tóxicos.</p>
+    </div>
+  </div>
+
+  <div class="uiverse-card">
+    <img src="temor.jpg" alt="Imagen 5">
+    <div class="card__content">
+      <p class="card__title">TEMOR</p>
+      <p class="card__description">Es el mecanismo de supervivencia por excelencia. Se activa ante el peligro inmediato para preparar al cuerpo para la huida o la defensa, protegiendo la integridad física.</p>
+    </div>
+  </div>
+
+  <div class="uiverse-card">
+    <img src="ansiedad.jpg" alt="Imagen 6">
+    <div class="card__content">
+      <p class="card__title">ANSIEDAD</p>
+      <p class="card__description">Se orienta hacia el futuro y lo incierto. Su objetivo es anticipar posibles problemas o amenazas lejanas para preparar estrategias de afrontamiento y prevención.</p>
+    </div>
+  </div>
+
+  <div class="uiverse-card">
+    <img src="envidia.jpg" alt="Imagen 7">
+    <div class="card__content">
+      <p class="card__title">ENVIDIA</p>
+      <p class="card__description">Nace de la comparación social. Permite identificar deseos o metas al observar lo que otros poseen, sirviendo como estímulo de superación o alerta de desigualdad.</p>
+    </div>
+  </div>
+
+  <div class="uiverse-card">
+    <img src="verguenza.jpg" alt="Imagen 8">
+    <div class="card__content">
+      <p class="card__title">VERGUENZA</p>
+      <p class="card__description">Aparece cuando se percibe una falla respecto a las expectativas del entorno. Su función es promover la autoreflexión sobre las conductas sociales para no poner en riesgo la pertenencia al grupo.</p>
+    </div>
+  </div>
+
+  <div class="uiverse-card">
+    <img src="aburrimiento.jpg" alt="Imagen 9">
+    <div class="card__content">
+      <p class="card__title">ABURRIMIENTO</p>
+      <p class="card__description">Refleja la falta de estímulo o interés. Funciona como un regulador que indica la necesidad de cambio, descanso o búsqueda de nuevas actividades con mayor significado.</p>
+    </div>
+  </div>
+<audio id="persistent-audio" controls>
+  <source src="cancion.mp3" type="audio/mp3">
+</audio>
+
+<script>
+  const audio = document.getElementById('persistent-audio');
+
+  const savedTime = localStorage.getItem('audio_current_time');
+  const isPlaying = localStorage.getItem('audio_is_playing');
+
+  if (savedTime) {
+    audio.currentTime = parseFloat(savedTime);
+  }
+
+  if (isPlaying === 'true') {
+    audio.play().catch(() => {
+      console.log("Haz clic en la página para reanudar el audio.");
+    });
+  }
+
+  audio.addEventListener('timeupdate', () => {
+    localStorage.setItem('audio_current_time', audio.currentTime);
+  });
+
+  audio.addEventListener('play', () => {
+    localStorage.setItem('audio_is_playing', 'true');
+  });
+
+  audio.addEventListener('pause', () => {
+    localStorage.setItem('audio_is_playing', 'false');
+  });
+</script>
+</div>
+</body>
+</html>

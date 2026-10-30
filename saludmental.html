@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salud Mental</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header><h1>Salud Mental y Bienestar</h1>
+        <nav>
+            <ul>
+                <a href="index.html">
+<button class="button2">Pagina Principal</button>
+</a>
+<a href="emociones.html">
+<button class="button2">Emociones</button>
+</a>
+        <a href="saludmental.html">
+<button class="button2">Salud Mental</button>
+</a>
+<a href="estres.html">
+<button class="button2">Estres</button>
+</a>
+            </ul>
+        </nav>
+        </header>
+<div class="=contenedor-principal">
+ <div class="card card-titulo">
+      <p class="card-title">Redes de Bienestar</p>
+      <p class="small-desc">
+       Un proyecto enfocado en la salud mental 
+       busca entrelazar tres niveles fundamentales 
+       para lograr el bienestar integral y 
+       el éxito escolar:
+      </p>
+      <div class="go-corner">
+        <div class="go-arrow">→</div>
+      </div>
+    </div>
+<div class="contenedor-columnas">
+<div class="card shadow">
+    <h3>El Aula:</h3> Los estudiantes identifican cómo el estrés 
+    y las emociones influyen directamente en su 
+    rendimiento académico y vida cotidiana. 
+    </div>
+    <div class="card shadow">
+    <h3>La Escuela:</h3> Se construyen entornos seguros y 
+    libres de violencia donde los estudiantes 
+    puedan expresarse, sentirse escuchados y 
+    respaldados mediante redes de apoyo. 
+    </div>
+    <div class="card shadow"> 
+    <h3>La Comunidad:</h3> Se involucra a las familias 
+    (padres, madres y tutores) para fortalecer 
+    el tejido social, promoviendo hábitos saludables 
+    y previniendo conductas de riesgo (como el uso 
+    excesivo de tecnología o las adicciones).  
+</div>
+</div>
+<main>
+    <h2 style="color: #091c7a;">¿Qué es la Agitación Mental?</h2>
+    <p>La agitación mental ocurre cuando nuestra 
+        mente es constantemente atraída hacia múltiples 
+        estímulos, ideas, preocupaciones o emociones de 
+        forma vertiginosa.</p>
+        <img src="saludmental.jpg" alt="saludmental"  width="410" height="400">
+
+</main>
+</div>
+<aside>
+    <img src="saludmental2.jpg" alt="saludmental2"  width="400" height="300">
+      <h2 style="color: #091c7a;">La Analogía de la Pelota de Brillantina:</h2>
+      <p>
+       Imagina una esfera navideña o una botella con agua 
+        y brillantina. Al agitarla, la brillantina enturbia 
+        el agua y no permite ver claramente. De forma similar, 
+        cuando la mente está agitada, nuestra capacidad de 
+        pensar se nubla y experimentamos ansiedad o intranquilidad.
+      </p>
+    </div>
+
+</aside>
+
+</div>  
+<audio id="persistent-audio" controls>
+  <source src="cancion.mp3" type="audio/mp3">
+</audio>
+
+<script>
+  const audio = document.getElementById('persistent-audio');
+
+  const savedTime = localStorage.getItem('audio_current_time');
+  const isPlaying = localStorage.getItem('audio_is_playing');
+
+  if (savedTime) {
+    audio.currentTime = parseFloat(savedTime);
+  }
+
+  if (isPlaying === 'true') {
+    audio.play().catch(() => {
+      console.log("Haz clic en la página para reanudar el audio.");
+    });
+  }
+
+  audio.addEventListener('timeupdate', () => {
+    localStorage.setItem('audio_current_time', audio.currentTime);
+  });
+
+  audio.addEventListener('play', () => {
+    localStorage.setItem('audio_is_playing', 'true');
+  });
+
+  audio.addEventListener('pause', () => {
+    localStorage.setItem('audio_is_playing', 'false');
+  });
+</script>     
+</body>
+</html>
